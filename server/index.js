@@ -20,7 +20,7 @@ passport.use(new GoogleStrategy({
   callbackURL: process.env.LOCAL_GOOGLE_REDIRECT || 'https://frozen-beach-49440.herokuapp.com/auth/google/callback',
   passReqToCallback: true
   },
-  //lookup or create a new user using the googleId (no associated username or password)
+  //Lookup or create a new user using the googleId (no associated username or password)
   function(req, accessToken, refreshToken, profile, done) {
     db.findOrCreateUser({ googleId: profile.id, sessionID: req.sessionID }, function (err, user) {
       return done(err, user);
